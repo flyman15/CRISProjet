@@ -25,18 +25,20 @@ def read_csv(file_path, filed_names):
 
 if __name__ == "__main__":
     # read data from csv file
-    path = 'Data/1.csv'
-    vara_name = 'cu1904'
-    names = ['Time', vara_name]
-    d = read_csv(path, names)
+    path = 'Data/rb1910.csv'
+    vara_name = 'LastVolume'
+    # names = ['Time', vara_name]
+    d = pd.read_csv(path)
+    print(d)
 
     # plot real data
-    yy = d[vara_name]
+    yy = d[vara_name][50:len(d[vara_name])]
+    print(yy)
     plt.figure(1)
     plt.plot(range(1, len(yy)+1), yy)
 
     # calculate MA data and plot it
-    n = 120
+    n = 20
     exemp = MA(d[vara_name], n)
     exemp.calculate_ma()
     plt.plot(range(1+n, len(exemp.MAlist)+n+1), exemp.MAlist)
