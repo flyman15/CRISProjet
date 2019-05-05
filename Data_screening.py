@@ -17,7 +17,7 @@ def filter_data(msg, ID):
     return data
 
 
-data_path = 'MarketData_20190315_084003.csv'
+data_path = 'Data/MarketData_20190315_084003.csv'
 ID = 'rb1910'
 
 msg = pd.read_csv(data_path)
@@ -28,7 +28,7 @@ for index, row in data.iterrows():
     p = [row['LastPrice'], row['AskPrice1'], row['BidPrice1']]
     p.sort()
     new_data.loc[new_data.shape[0]+1] = {'Price': p[1], 'LastVolume': row['LastVolume']}
-new_data.to_csv('rb1910 Price & LastVolume.csv', index=False, sep=',')
+new_data.to_csv('Data/rb1910 Price & LastVolume.csv', index=False, sep=',')
 
 
 

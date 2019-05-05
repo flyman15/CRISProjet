@@ -10,14 +10,23 @@ def read_csv1(file_path, filed_names):
         d.append(row[filed_names])
     return d
 
+
 if __name__ == "__main__":
     # read data from csv file
-    path = 'rb1910 Price & LastVolume.csv'
+    path = 'Data/rb1910 Price & LastVolume.csv'
     vara_name = 'LastVolume'
     d = read_csv1(path, vara_name)
+    # d = pd.read_csv(path)
+    # foo = d[d['LastVolume'] != 0]
+    # foo1 = foo[vara_name]
+    # summary = foo1.describe()
+    # print(summary)
+    # foo1 = foo1.tolist()
+
     df = pd.read_csv(path)
     summary= df['LastVolume'].describe()
     print(summary)
+    print(d)
 
     sns.set_style('darkgrid')
     # 设置了20个矩形条，画出频率直方图及核密度估计曲线
